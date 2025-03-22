@@ -82,3 +82,15 @@ const makeGallery = images
   .join('');
 
 gallery.insertAdjacentHTML('beforeend', makeGallery);
+
+gallery.addEventListener('click', (e) => {
+  if (e.target.nodeName === 'IMG') {
+    e.preventDefault();
+  }
+
+  const instance = basicLightbox.create(`
+      <img src="${e.target.dataset.source}" style=" width: 1112px; height: 640px">
+  `);
+
+  instance.show();
+});
